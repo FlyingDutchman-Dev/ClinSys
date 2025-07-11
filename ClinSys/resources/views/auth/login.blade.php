@@ -70,9 +70,20 @@
     @stop
 
     @section('adminlte_js')
+
     <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
     <script>
         $(function() {
+            // Mostra o primeiro erro com Toastr
+            @if($errors->any())
+                toastr.error("{{ addslashes($errors->first()) }}", "Erro ao fazer login", {
+                    closeButton: true,
+                    progressBar: true,
+                    timeOut: 5000,
+                });
+            @endif
+
+
             // Se houver erros de validação, dispara um Toast do AdminLTE
             @if($errors -> any())
             $(document).Toasts('create', {
@@ -85,26 +96,15 @@
             @endif
 
             // Exemplo: criar Toast de sucesso manualmente
-            $('.toastSuccess').click(function() {
+            $('.toastrDefaultSuccess').click(function() {
                 $(document).Toasts('create', {
                     class: 'bg-success',
                     autohide: true,
                     delay: 3000,
-                    title: 'Sucesso',
                     body: 'Operação realizada com sucesso!'
                 });
             });
         });
     </script>
-
-    @section('js')
-    <script>
-        $(function() {
-            $('.toastrDefaultSuccess').click(function() {
-                toastr.success('Funcionou! Mensagem de sucesso exibida 😎');
-            });
-        });
-    </script>
-    @endsection
 
     @stop
