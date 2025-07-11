@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>ClinSys</b>',
+    'logo_img' => 'images\cfav.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'ClinSys Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'images\logo-clinsys.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -113,8 +113,8 @@ return [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'path' => 'images\cfav.png',
+            'alt' => 'ClinSys Logo',
             'effect' => 'animation__shake',
             'width' => 60,
             'height' => 60,
@@ -198,7 +198,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -301,19 +301,28 @@ return [
     'menu' => [
         // Navbar items:
         [
+            'text' => 'Home',
+            'url' => '/home',
+            'topnav' => true,
+        ],
+        [
             'type' => 'navbar-search',
-            'text' => 'search',
+            'text' => 'Pesquisar',
             'topnav_right' => true,
         ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+        [
+            'type' => 'darkmode-widget',
+            'topnav_right' => true,
+        ],
 
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Pesquisar',
         ],
         [
             'text' => 'blog',
@@ -327,7 +336,25 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+
+        // Menu para admin
+        [
+            'text' => ' Equipe',
+            'icon' => 'fas fa-user-md',
+            'can' => 'admin-only',
+            'submenu' => [
+                [
+                    'text' => 'Gerenciar Equipe',
+                    'url'  => 'admin/usuarios',
+                ],
+                [
+                    'text' => 'Cadastrar Membro',
+                    'url'  => 'admin/usuarios/create',
+                ],
+            ],
+        ],
+
+        ['header' => 'CONFIGURAÇÕES DA CONTA'],
         [
             'text' => 'profile',
             'url' => 'admin/settings',
@@ -481,6 +508,21 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                ],
+            ],
+        ],
+        'Toastr' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type'     => 'css',
+                    'asset'    => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css',
+                ],
+                [
+                    'type'     => 'js',
+                    'asset'    => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js',
                 ],
             ],
         ],

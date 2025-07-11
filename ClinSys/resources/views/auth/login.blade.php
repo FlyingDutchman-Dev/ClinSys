@@ -9,7 +9,6 @@
 <body class="hold-transition login-page" style="height: 100vh;">
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="login-box">
-            <button class="btn btn-success toastrDefaultSuccess">Teste Sucesso</button>
 
             <div class="login-logo">
                 <img src="{{ asset('images/logo-clinsys.png') }}" alt="ClinSys" style="width: 180px;">
@@ -75,16 +74,16 @@
     <script>
         $(function() {
             // Mostra o primeiro erro com Toastr
-            @if($errors->any())
-                toastr.error("{{ addslashes($errors->first()) }}", "Erro ao fazer login", {
-                    closeButton: true,
-                    progressBar: true,
-                    timeOut: 5000,
-                });
+            @if($errors -> any())
+            toastr.error("{{ addslashes($errors->first()) }}", "Ooops!", {
+                closeButton: true,
+                progressBar: true,
+                timeOut: 5000,
+            });
             @endif
 
-
-            // Se houver erros de validação, dispara um Toast do AdminLTE
+            // Se houver erros de validação, dispara um Toast SWEETLAERT do AdminLTE
+            /*
             @if($errors -> any())
             $(document).Toasts('create', {
                 class: 'bg-danger', // fundo vermelho
@@ -94,6 +93,7 @@
                 body: '{{ addslashes($errors->first()) }}'
             });
             @endif
+            */
 
             // Exemplo: criar Toast de sucesso manualmente
             $('.toastrDefaultSuccess').click(function() {
